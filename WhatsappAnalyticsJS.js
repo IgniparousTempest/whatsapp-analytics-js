@@ -194,7 +194,7 @@ function emojiTotal(emojis, names) {
     let total = countDictionary(names);
     
     for (let i = 0; i < names.length; i++) {
-        total[names[i]] = Object.values(emojis[names[i]]).reduce((a, b) => a + b);
+        total[names[i]] = Object.values(emojis[names[i]]).reduce((a, b) => a + b, 0);
     }
 
     return total;
