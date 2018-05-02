@@ -172,18 +172,18 @@ function emojiCount(messages, names) {
         if (names.includes(messages[i].name))
             while (true) {
                 const match = regex.exec(messages[i].message);
-		// No more matches
+                // No more matches
                 if (match === null)
                     break;
                 // Ignore the fitzpatrick modifiers.
-                if (match[0] === '??' || match[0] === '??' || match[0] === '??' || match[0] === '??' || match[0] === '??')
+                if (match[0] === '🏻' || match[0] === '🏼' || match[0] === '🏽' || match[0] === '🏾' || match[0] === '🏿')
                     continue;
-	        // Add emoji to dict
-		if (match[0] in emojis[messages[i].name])
-		    emojis[messages[i].name][match[0]] += 1;
-		else
-		    emojis[messages[i].name][match[0]] = 1;
-            }
+                // Add emoji to dict
+                if (match[0] in emojis[messages[i].name])
+                    emojis[messages[i].name][match[0]] += 1;
+                else
+                    emojis[messages[i].name][match[0]] = 1;
+		    }
     }
 
     return emojis;
@@ -233,11 +233,11 @@ function skinColour(messages, names) {
 
     for (let i = 0; i < messages.length; i++) {
         if (names.includes(messages[i].name)) {
-            colours[messages[i].name]['🏻'] = (messages[i].message.match(/🏻/g) || []).length;
-            colours[messages[i].name]['🏼'] = (messages[i].message.match(/🏼/g) || []).length;
-            colours[messages[i].name]['🏽'] = (messages[i].message.match(/🏽/g) || []).length;
-            colours[messages[i].name]['🏾'] = (messages[i].message.match(/🏾/g) || []).length;
-            colours[messages[i].name]['🏿'] = (messages[i].message.match(/🏿/g) || []).length;
+            colours[messages[i].name]['🏻'] += (messages[i].message.match(/🏻/g) || []).length;
+            colours[messages[i].name]['🏼'] += (messages[i].message.match(/🏼/g) || []).length;
+            colours[messages[i].name]['🏽'] += (messages[i].message.match(/🏽/g) || []).length;
+            colours[messages[i].name]['🏾'] += (messages[i].message.match(/🏾/g) || []).length;
+            colours[messages[i].name]['🏿'] += (messages[i].message.match(/🏿/g) || []).length;
         }
     }
 
